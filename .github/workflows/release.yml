@@ -1,0 +1,73 @@
+name: Build and Release APK
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      tag_name:
+        description: 'Tên tag release (vd: v1.0.0)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build & Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Build Release APK
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleRelease --stacktrace
+
+      - name: Prepare APK & Tag
+        id: prep
+        run: |
+          VERSION="${{ github.ref_name }}"
+          if [[ "$GITHUB_REF" != refs/tags/* ]]; then
+            VERSION="${{ github.event.inputs.tag_name }}"
+            if [ -z "$VERSION" ]; then
+              VERSION="v1.0"
+            fi
+          fi
+
+          APK_FILE="QuickCTS-${VERSION}.apk"
+          cp app/build/outputs/apk/release/app-release.apk "$APK_FILE"
+          
+          echo "tag=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "apk_file=$APK_FILE" >> "$GITHUB_OUTPUT"
+
+      - name: Upload APK to Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.prep.outputs.apk_file }}
+          path: ${{ steps.prep.outputs.apk_file }}
+
+      - name: Publish to GitHub Releases
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.prep.outputs.tag }}
+          name: QuickCTS ${{ steps.prep.outputs.tag }}
+          files: ${{ steps.prep.outputs.apk_file }}
+          generate_release_notes: true
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
