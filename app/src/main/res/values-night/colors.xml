@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Màu giao diện Cài đặt QuickCTS (Dark Mode) -->
+    <color name="settings_bg">#0F172A</color>
+    <color name="settings_card_bg">#1E293B</color>
+    <color name="settings_card_stroke">#334155</color>
+    <color name="settings_text_primary">#F8FAFC</color>
+    <color name="settings_text_secondary">#94A3B8</color>
+    <color name="settings_brand_primary">#3B82F6</color>
+    <color name="settings_brand_primary_subtle">#1E3A5F</color>
+    <color name="settings_badge_bg">#1E3A8A</color>
+    <color name="settings_badge_text">#93C5FD</color>
+</resources>

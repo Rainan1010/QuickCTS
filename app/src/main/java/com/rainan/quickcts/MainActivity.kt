@@ -13,11 +13,13 @@ class MainActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Delay 300ms để hệ thống kịp thu gọn Quick Settings / hoàn tất hiệu ứng trước khi chụp màn hình CTS
+        val delayMs = PreferencesManager.getDelayMs(this)
+        val hapticEnabled = PreferencesManager.isHapticEnabled(this)
+
         handler.postDelayed({
             if (isFinishing || isDestroyed) return@postDelayed
 
-            val success = CtsTriggerHelper.triggerCircleToSearch(this)
+            val success = CtsTriggerHelper.triggerCircleToSearch(this, vibrate = hapticEnabled)
             if (!success) {
                 Toast.makeText(this, getString(R.string.trigger_failed), Toast.LENGTH_SHORT).show()
             }
@@ -29,7 +31,7 @@ class MainActivity : Activity() {
                 @Suppress("DEPRECATION")
                 overridePendingTransition(0, 0)
             }
-        }, 300L)
+        }, delayMs)
     }
 
     override fun onDestroy() {

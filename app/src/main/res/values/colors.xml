@@ -7,4 +7,15 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Màu giao diện Cài đặt QuickCTS (Light) -->
+    <color name="settings_bg">#F8FAFC</color>
+    <color name="settings_card_bg">#FFFFFF</color>
+    <color name="settings_card_stroke">#E2E8F0</color>
+    <color name="settings_text_primary">#0F172A</color>
+    <color name="settings_text_secondary">#64748B</color>
+    <color name="settings_brand_primary">#2563EB</color>
+    <color name="settings_brand_primary_subtle">#EFF6FF</color>
+    <color name="settings_badge_bg">#DBEAFE</color>
+    <color name="settings_badge_text">#1D4ED8</color>
 </resources>

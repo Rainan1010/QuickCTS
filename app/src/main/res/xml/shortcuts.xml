@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
     <shortcut
+        android:shortcutId="settings"
+        android:enabled="true"
+        android:icon="@drawable/ic_settings"
+        android:shortcutShortLabel="@string/shortcut_settings_short"
+        android:shortcutLongLabel="@string/shortcut_settings_long">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.rainan.quickcts"
+            android:targetClass="com.rainan.quickcts.SettingsActivity" />
+    </shortcut>
+    <shortcut
         android:shortcutId="trigger_cts"
         android:enabled="true"
         android:icon="@drawable/ic_tile_cts"

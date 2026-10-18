@@ -3,4 +3,17 @@
     <string name="tile_label">Circle to Search</string>
     <string name="shortcut_label">Circle to Search</string>
     <string name="trigger_failed">Kích hoạt Circle to Search thất bại! Vui lòng đảm bảo Google đã được đặt làm Trợ lý mặc định.</string>
+
+    <!-- Chuỗi cho màn hình Cài đặt -->
+    <string name="settings_title">Cài đặt QuickCTS</string>
+    <string name="shortcut_settings_short">Cài đặt</string>
+    <string name="shortcut_settings_long">Cài đặt độ trễ</string>
+    <string name="delay_title">Độ trễ kích hoạt</string>
+    <string name="delay_desc">Thời gian chờ trước khi kích hoạt CTS. Tăng độ trễ nếu bảng Quick Settings chưa kịp đóng hẳn trước khi màn hình được quét.</string>
+    <string name="delay_ms_format">%1$d ms</string>
+    <string name="delay_min_label">0 ms</string>
+    <string name="delay_max_label">1000 ms</string>
+    <string name="haptic_title">Phản hồi rung</string>
+    <string name="haptic_desc">Rung nhẹ khi Circle to Search được kích hoạt thành công.</string>
+    <string name="action_back">Quay lại</string>
 </resources>
