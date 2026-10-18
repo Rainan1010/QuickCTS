@@ -13,7 +13,7 @@ class MainActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Delay 200ms để hệ thống kịp thu gọn Quick Settings / hoàn tất hiệu ứng trước khi chụp màn hình CTS
+        // Delay 300ms để hệ thống kịp thu gọn Quick Settings / hoàn tất hiệu ứng trước khi chụp màn hình CTS
         handler.postDelayed({
             if (isFinishing || isDestroyed) return@postDelayed
 
@@ -29,7 +29,7 @@ class MainActivity : Activity() {
                 @Suppress("DEPRECATION")
                 overridePendingTransition(0, 0)
             }
-        }, 200L)
+        }, 300L)
     }
 
     override fun onDestroy() {
